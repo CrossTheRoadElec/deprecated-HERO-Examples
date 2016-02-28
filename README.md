@@ -12,3 +12,7 @@ These examples will be periodically merged into CTRE's HERO-SDK-Installer, in wh
  HERO User's Guide and SDK-Installer can be found at...
  http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources
  
+# HERO-mIP-ENC28J
+This is a HERO port of the TCP/IP networking examples utilizing mIP, an open-source managed TCP/IP stack written in C#.
+This was tested using an ENC28J breakout on Port 1.
+Original code: http://mip.codeplex.com/
