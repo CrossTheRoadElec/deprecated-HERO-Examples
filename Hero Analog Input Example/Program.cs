@@ -37,3 +37,21 @@ namespace $safeprojectname$
         }
     }
 }
+
+//This is part of the peripheral library.  It will be removed when new SDK is published.
+namespace CTRE
+{
+    namespace HERO
+    {
+        namespace IO
+        {
+            public static class Port1
+            {
+                public const Cpu.AnalogChannel Analog_Pin3 = Cpu.AnalogChannel.ANALOG_0;
+                public const Cpu.AnalogChannel Analog_Pin4 = Cpu.AnalogChannel.ANALOG_1;
+                public const Cpu.AnalogChannel Analog_Pin5 = Cpu.AnalogChannel.ANALOG_2;
+            }
+        }
+    }
+}
+

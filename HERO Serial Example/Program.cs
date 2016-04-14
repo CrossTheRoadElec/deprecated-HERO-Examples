@@ -106,3 +106,27 @@ namespace HERO_Serial_Example
         }
     }
 }
+
+
+//This is part of the peripheral library.  It will be removed when the new SDK is published.
+namespace CTRE
+{
+    namespace HERO
+    {
+        namespace IO
+        {
+            public static class Port1
+            {
+                public const string UART = "COM4";
+            }
+            public static class Port4
+            {
+                public const string UART = "COM2";
+            }
+            public static class Port6
+            {
+                public const string UART = "COM6";
+            }
+        }
+    }
+}
