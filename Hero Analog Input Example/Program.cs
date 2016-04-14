@@ -2,15 +2,17 @@
 using System.Threading;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
+using CTRE.HERO.IO;
+
 
 namespace $safeprojectname$
 {
     public class Program
     {
         /* create analog inputs from PORT1(AUSX) */
-        static AnalogInput analogInput0 = new AnalogInput(Microsoft.SPOT.Hardware.Cpu.AnalogChannel.ANALOG_0);
-        static AnalogInput analogInput1 = new AnalogInput(Microsoft.SPOT.Hardware.Cpu.AnalogChannel.ANALOG_1);
-        static AnalogInput analogInput2 = new AnalogInput(Microsoft.SPOT.Hardware.Cpu.AnalogChannel.ANALOG_2);
+        static AnalogInput analogInput0 = new AnalogInput(Port1.Analog_Pin3);
+        static AnalogInput analogInput1 = new AnalogInput(Port1.Analog_Pin4);
+        static AnalogInput analogInput2 = new AnalogInput(Port1.Analog_Pin5);
 
         public static void Main()
         {
