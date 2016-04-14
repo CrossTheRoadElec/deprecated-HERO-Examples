@@ -6,6 +6,7 @@
  * HERO Gadgeteer Port 1 is used in this example, but can be changed at the top of Main().
  */
 using System;
+using CTRE.HERO.IO;
 using System.Threading;
 using Microsoft.SPOT;
 
@@ -61,11 +62,11 @@ namespace HERO_Serial_Example
             /* temporary array */
             byte[] scratch = new byte[1];
             /* open the UART, select the com port based on the desired gadgeteer port.
-             *   PORT1_AUSX COM4
-             *   PORT4_IKUX COM2
-             *   PORT6_IUX  COM6
+             *   This utilizes the CTRE.IO Library.
+             *   The full listing of COM ports on HERO can be viewed in CTRE.IO
+             *   
              */
-            _uart = new System.IO.Ports.SerialPort("COM4", 115200);
+            _uart = new System.IO.Ports.SerialPort(Port1.UART, 115200);
             _uart.Open();
             /* send a message to the terminal for the user to see */
             _uart.Write(_helloMsg, 0, _helloMsg.Length);
