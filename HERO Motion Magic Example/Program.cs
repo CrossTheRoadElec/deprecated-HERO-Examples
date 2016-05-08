@@ -1,4 +1,8 @@
-﻿using System.Threading;
+﻿/**
+ * Example using the Motion Magic Control Mode of Talon SRX.
+ * This will require Talon firmware 10.10 or greater.
+ */
+using System.Threading;
 using System;
 using Microsoft.SPOT;
 
