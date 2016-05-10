@@ -1,3 +1,8 @@
+/**
+ * All debug print statements are placed in this module for clarity.
+ * VIEW => OUTPUT to see the output window.
+ * This module could be modified to use UART, CAN, etc...
+ */
 using System;
 using Microsoft.SPOT;
 
@@ -7,8 +12,9 @@ namespace HERO_Motion_Magic_Example
     {
         /** create a single stringbuilder to reuse */
         private static System.Text.StringBuilder _sb = new System.Text.StringBuilder();
-        /* counts loops to reduce print frequency */
+        /** counts loops to reduce print frequency */
         private static int _instrumLoops1 = 0;
+        /** number of inner loops to occasionally print columns */
         private static int _instrumLoops2 = 0;
 
         public static void PrintConfigError()
