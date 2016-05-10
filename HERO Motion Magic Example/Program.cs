@@ -13,7 +13,7 @@ namespace HERO_Motion_Magic_Example
         /** talon to control */
         private CTRE.TalonSrx _talon = new CTRE.TalonSrx(0);
         /** desired mode to put talon in */
-        private CTRE.TalonSrx.ControlMode _mode = CTRE.TalonSrx.ControlMode.kMotionMagic;
+        private CTRE.TalonSrx.ControlMode _mode = CTRE.TalonSrx.ControlMode.kPercentVbus;
         /** attached gamepad to HERO, tested with Logitech F710 */
         private CTRE.Gamepad _gamepad = new CTRE.Gamepad(new CTRE.UsbHostDevice());
         /** constant slot to use */
