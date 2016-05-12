@@ -1,6 +1,22 @@
 ﻿/**
- * Example using the Motion Magic Control Mode of Talon SRX.
- * This will require Talon firmware 10.10 or greater.
+ * Example using the Motion Magic Control Mode of Talon SRX and the Magnetic Encoder.  Other sensors can be used by
+ * changing the selected sensor type below.
+
+ * MotionMagic control mode requires Talon firmware 10.10 or greater.
+
+ * The test setup is ...
+ *      A single Talon SRX (Device ID 0) http://www.ctr-electronics.com/talon-srx.html
+ *      A VEX VersaPlanetary Gearbox http://www.vexrobotics.com/versaplanetary.html 
+ *      Gearbox uses the CTRE Magnetic Encoder http://www.vexrobotics.com/vexpro/all/new-for-2016/217-5046.html
+ *      Ribbon cable http://www.ctr-electronics.com/talon-srx-data-cable-4-pack.html
+ *
+ *      Talon SRX ribbon cable is connected to the Magnetic Encoder.  This provies the Talon with rotar position.
+ *      See Talon SRX Software Reference Manual for gain-tuning suggestions.
+ *
+ * Press the top left shoulder button for direct-control of Talon's motor output using the left-y-axis.
+ * Press the bottom left shoulder button to set the target position of the Talon's closed loop servo 
+ * using the left-y-axis.  Notice the geared output will ramp up initiallly then ramp down as it approaches 
+ * the target position.
  */
 using System.Threading;
 using System;
