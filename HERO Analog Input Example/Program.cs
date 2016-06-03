@@ -5,7 +5,7 @@ using Microsoft.SPOT.Hardware;
 using CTRE.HERO.IO;
 
 
-namespace $safeprojectname$
+namespace HERO_Analog_Input_Example
 {
     public class Program
     {

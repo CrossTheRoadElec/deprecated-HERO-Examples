@@ -3,7 +3,7 @@ using System.Threading;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
 
-namespace $safeprojectname$
+namespace HERO_Simple_Application
 {
     public class Program
     {

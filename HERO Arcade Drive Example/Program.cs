@@ -3,7 +3,7 @@ using System.Threading;
 using Microsoft.SPOT;
 using System.Text;
 
-namespace $safeprojectname$
+namespace Hero_Arcade_Drive_Example
 {
     public class Program
     {
