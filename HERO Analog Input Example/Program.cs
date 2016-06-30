@@ -2,7 +2,6 @@
 using System.Threading;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
-using CTRE.HERO.IO;
 
 
 namespace HERO_Analog_Input_Example
@@ -10,9 +9,9 @@ namespace HERO_Analog_Input_Example
     public class Program
     {
         /* create analog inputs from PORT1(AUSX) */
-        static AnalogInput analogInput0 = new AnalogInput(Port1.Analog_Pin3);
-        static AnalogInput analogInput1 = new AnalogInput(Port1.Analog_Pin4);
-        static AnalogInput analogInput2 = new AnalogInput(Port1.Analog_Pin5);
+        static AnalogInput analogInput0 = new AnalogInput(CTRE.HERO.IO.Port1.Analog_Pin3);
+        static AnalogInput analogInput1 = new AnalogInput(CTRE.HERO.IO.Port1.Analog_Pin4);
+        static AnalogInput analogInput2 = new AnalogInput(CTRE.HERO.IO.Port1.Analog_Pin5);
 
         public static void Main()
         {
@@ -34,23 +33,6 @@ namespace HERO_Analog_Input_Example
 				/* wait a bit */
 				System.Threading.Thread.Sleep(10);
 			}
-        }
-    }
-}
-
-//This is part of the peripheral library.  It will be removed when new SDK is published.
-namespace CTRE
-{
-    namespace HERO
-    {
-        namespace IO
-        {
-            public static class Port1
-            {
-                public const Cpu.AnalogChannel Analog_Pin3 = Cpu.AnalogChannel.ANALOG_0;
-                public const Cpu.AnalogChannel Analog_Pin4 = Cpu.AnalogChannel.ANALOG_1;
-                public const Cpu.AnalogChannel Analog_Pin5 = Cpu.AnalogChannel.ANALOG_2;
-            }
         }
     }
 }

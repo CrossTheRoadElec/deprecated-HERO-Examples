@@ -6,7 +6,6 @@
  * HERO Gadgeteer Port 1 is used in this example, but can be changed at the top of Main().
  */
 using System;
-using CTRE.HERO.IO;
 using System.Threading;
 using Microsoft.SPOT;
 
@@ -66,7 +65,7 @@ namespace HERO_Serial_Example
              *   The full listing of COM ports on HERO can be viewed in CTRE.IO
              *   
              */
-            _uart = new System.IO.Ports.SerialPort(Port1.UART, 115200);
+            _uart = new System.IO.Ports.SerialPort(CTRE.HERO.IO.Port1.UART, 115200);
             _uart.Open();
             /* send a message to the terminal for the user to see */
             _uart.Write(_helloMsg, 0, _helloMsg.Length);
@@ -103,30 +102,6 @@ namespace HERO_Serial_Example
             for(int i=0;i<msg.Length;++i)
                 retval[i] = (byte)msg[i];
             return retval;
-        }
-    }
-}
-
-
-//This is part of the peripheral library.  It will be removed when the new SDK is published.
-namespace CTRE
-{
-    namespace HERO
-    {
-        namespace IO
-        {
-            public static class Port1
-            {
-                public const string UART = "COM4";
-            }
-            public static class Port4
-            {
-                public const string UART = "COM2";
-            }
-            public static class Port6
-            {
-                public const string UART = "COM6";
-            }
         }
     }
 }
