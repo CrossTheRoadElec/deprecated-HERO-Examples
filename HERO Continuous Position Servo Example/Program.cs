@@ -161,7 +161,11 @@ namespace HERO_Continuous_Position_Servo_Example
             _talon.SetControlMode(CTRE.TalonSrx.ControlMode.kPosition);
             _talon.Set(_targetPosition);
         }
-
+		/**
+		 * @param targetAngPosition target position to servo to (fractional).   Typically this value should be within [0,_sensorRange].
+		 * @param currentPosition  The return of Talon's GetPosition().
+		 * @param sensorRange  The value representing one rotation of the sensor.  Typically '1' if unit-scaling requirements are met.
+		 */
         float servo(float targetAngPosition, float currentPosition, float sensorRange)
         {
             float targetPosition;
