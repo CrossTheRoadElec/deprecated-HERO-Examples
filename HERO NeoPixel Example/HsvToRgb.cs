@@ -8,6 +8,15 @@ using System;
 /// </remarks>
 class HsvToRgb
 {
+    /// <summary>
+    /// Convert hue/saturation/value into RGB values.
+    /// </summary>
+    /// <param name="hDegrees"> Hue in degrees.</param>
+    /// <param name="S">Saturation with range 0 to 1.</param>
+    /// <param name="V">Value with range 0 to 1.</param>
+    /// <param name="r">Calculated red component.</param>
+    /// <param name="g">Calculated green component.</param>
+    /// <param name="b">Calculated blue component.</param>
     public static void Convert(double hDegrees, double S, double V, out uint r, out uint g, out uint b)
     {
         double R, G, B;

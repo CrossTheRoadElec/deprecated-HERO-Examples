@@ -25,6 +25,12 @@ public class HeroPixel
     public const uint ORANGE = 0xFF3a00;
     public const uint PINK = 0xFF6065;
 
+    /// <summary>
+    /// Each color requires 8 bits, which translates to 8 SPI-byte-writes.
+    /// </summary>
+    private const uint kSpiBytesPerColor = 8; 
+    private const uint kColorsPerPixel = 3;
+
     // used for SPI communication
     SPI SPIDevice;
     SPI.Configuration Configuration;
@@ -34,13 +40,18 @@ public class HeroPixel
     byte[] _spiOut;
     uint _numPixels;         // strip's length
 
-    // constructor
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="color"> RGB value to initially set all LEDs to.  Pass OFF or 0 to start with LEDs off. </param>
+    /// <param name="numPixels"> Number of pixels in strip.</param>
+    /// <param name="spiModule"> Optional paramter for specifying which SPI module.  Omit this paramter to default to HERO S ports. </param>
     public HeroPixel(uint color, uint numPixels = 1, SPI.SPI_module spiModule = SPI.SPI_module.SPI4) 
     {
         _numPixels = (numPixels > 0) ? numPixels : 1;
 
         _pixels = new uint[_numPixels];
-        _spiOut = new byte[3 * 8 * _numPixels + 1]; // create array for output
+        _spiOut = new byte[kColorsPerPixel * kSpiBytesPerColor * _numPixels + 1]; // create array for output with +1 extra for START_OF_RST at the end
 
         setStripColor(color);
 
@@ -48,7 +59,12 @@ public class HeroPixel
         Configuration = new SPI.Configuration(Cpu.Pin.GPIO_NONE, false, 0, 0, false, false, 9000, spiModule);
         SPIDevice = new SPI(Configuration);
     }
-    // sets color values for pixels strip of size length beginning at start
+    /// <summary>
+    /// sets color values for pixels strip of size length beginning at start
+    /// </summary>
+    /// <param name="color"> RGB value to set in selected pixels</param>
+    /// <param name="start"> Index of the first pixel to update. </param>
+    /// <param name="length"> Number of pixels to change. </param>
     public void setColor(uint color, uint start, uint length)
     {
         for (uint i = start; i < (start + length); i++)
@@ -59,7 +75,7 @@ public class HeroPixel
                 _pixels[i] = color;
 
                 /* update spi map */
-                uint counter = 3 * 8 * i;                         // keeps track of position in array
+                uint counter = kColorsPerPixel * kSpiBytesPerColor * i; // keeps track of position in array
                 byte grn = (byte)(color >> 8);
                 byte red = (byte)(color >> 16);
                 byte blu = (byte)(color >> 0);
@@ -86,17 +102,24 @@ public class HeroPixel
             }
         }
     }
-
-    // sets color of strip
+    /// <summary>
+    /// sets color of strip 
+    /// </summary>
+    /// <param name="color"></param>
     public void setStripColor(uint color)
     {
         setColor(color, 0, _numPixels);
     }
-    // outputs the data over 9 MHz SPI transmission
+    /// <summary>
+    ///  Outputs the data over 9 MHz SPI transmission
+    /// </summary>
     public void writeOutput()
     {
         SPIDevice.Write(_spiOut);
     }
+    /// <summary>
+    /// Number of pixels this class was constructed with.
+    /// </summary>
     public uint NumberPixels
     {
         get

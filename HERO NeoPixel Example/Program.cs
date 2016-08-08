@@ -38,6 +38,18 @@ namespace NeoPixel_Example
         /// <summary> TRUE iff color is controlled by user interface, FALSE if streaming through color sequence. </summary>
         bool _colorWheelMode = false;
 
+        private float Deadband(float f)
+        {
+            if (f > +0.98)
+                return 1f;
+            if (f < -0.98)
+                return -1f;
+            if (f > +0.06)
+                return f;
+            if (f < -0.06)
+                return f;
+            return 0;
+        }
         public void RunForever()
         {
             /* get an X,Y, and btn value.  These could come from potentiometers for example, or USB gamepad */
@@ -55,6 +67,8 @@ namespace NeoPixel_Example
                 bool btn = aiBtn.Read() < 0.5f;
                 float x = (float)aiX.Read() * 2f - 1f; // [-1,1]
                 float y = (float)aiY.Read() * 2f - 1f; // [-1,1]
+                x = Deadband(x);
+                y = Deadband(y);
 
                 /* figure out next color based on current mode */
                 if (_colorWheelMode)
@@ -63,14 +77,21 @@ namespace NeoPixel_Example
                     https://en.wikipedia.org/wiki/HSL_and_HSV#HSV */
 
                     /* calc sat and hue, use 100% for value */
-                    float hueDeg = (float)System.Math.Atan2(y, x) * 180f / (float)System.Math.PI;
+                    float hueDeg = 0;
+                    if (y != 0 || x != 0)
+                    {
+                        hueDeg = (float)System.Math.Atan2(y, x) * 180f / (float)System.Math.PI;
+                        /* keep the angle positive */
+                        if (hueDeg < 0) { hueDeg += 360f; }
+                    }
+
                     float sat = (float)System.Math.Sqrt(x * x + y * y);
-                    if (hueDeg < 0) { hueDeg += 360f; }
+                    float value = 1f;
 
                     /* convert to rgb */
                     uint color;
                     uint r, g, b;
-                    HsvToRgb.Convert(hueDeg, sat, 1, out r, out g, out b);
+                    HsvToRgb.Convert(hueDeg, sat, value, out r, out g, out b);
                     color = r;
                     color <<= 8;
                     color |= g;
@@ -78,7 +99,7 @@ namespace NeoPixel_Example
                     color |= b;
 
                     /* set all LEDs to one color, controlled by analog signals */
-                    _heroPixels.setStripColor(color);
+                    _heroPixels.setColor(color, 0, _heroPixels.NumberPixels);
                 }
                 else
                 {
@@ -87,8 +108,7 @@ namespace NeoPixel_Example
                     _heroPixels.setColor(color, _pixelIdx, 1);
                 }
 
-                /* update LEDs */
-                _heroPixels.writeOutput();
+                /* update LEDs using SPI*/
                 _heroPixels.writeOutput();
 
                 /* iterate to next pixel */
@@ -102,10 +122,7 @@ namespace NeoPixel_Example
                 }
 
                 /* detect on-press event on button to change mode. */
-                if(btn && !_lastBtn)
-                {
-                    _colorWheelMode = !_colorWheelMode;
-                }
+                if (btn && !_lastBtn) { _colorWheelMode = !_colorWheelMode; }
                 _lastBtn = btn;
             }
         }
