@@ -74,7 +74,7 @@ namespace NeoPixel_Example
                 if (_colorWheelMode)
                 {
                     /* spin around the top circular slice of an HSV surface,
-                    https://en.wikipedia.org/wiki/HSL_and_HSV#HSV */
+                    https://en.wikipedia.org/wiki/HSL_and_HSV */
 
                     /* calc sat and hue, use 100% for value */
                     float hueDeg = 0;
