@@ -4,13 +4,13 @@ The HERO is a Gadgeteer main board that features the .NET Micro Framework. This 
 http://www.ctr-electronics.com/control-system/hro.html
 
 # Is HERO a robot controller?
-Yes, HERO typically is used as price-competitive robot controller.  The wireless gamepad support, and native support of CTRE CAN actuators also expedient development for robot applications.
+Yes, HERO typically is used as price-competitive robot controller.  The wireless gamepad support and native support of CTRE CAN actuators also allows for expedient development of robot applications.
 
 # Is HERO a development board?
 Yes, the development board is NETMF (C#) based, and supports a variety of IO options for display, sensors, physical interface, etc...
 
 # Common uses for HERO?
-- Developing robot platforms (land-based vehicles, robot arm, process lines) without a major price investment.
+- Developing robot platforms (land-based vehicles, robot arm, process lines, etc...) without a major price investment.
 - Inexpensive replacement for control systems on existing robots should original control system need to be repurposed or replaced.
 - Open source API for learning about CAN bus and how to integrate CTRE CAN devices into custom applications.
 
