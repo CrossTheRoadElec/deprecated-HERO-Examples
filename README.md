@@ -1,6 +1,8 @@
 # What is HERO?
 The HERO is a Gadgeteer main board that features the .NET Micro Framework. This powerful development platform allows users to program and debug using Visual Studio 2015 C#. This open hardware platform features 8 Gadgeteer ports that may be connected to a variety of Gadgeteer modules supporting SPI, I2C, UART/USART, SD Card, Analog, GPIO, PWM and a Talon SRX emulation port. The HERO also features dual wire CAN, USB host and USB device.
 
+http://www.ctr-electronics.com/control-system/hro.html
+
 # Is HERO a robot controller?
 Yes, HERO typically is used as price-competitive robot controller.  The wireless gamepad support, and native support of CTRE CAN actuators also expedient development for robot applications.
 
