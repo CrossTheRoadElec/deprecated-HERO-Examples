@@ -831,12 +831,44 @@ namespace CTRE
                 }
                 private void FillArr(byte[] arr, byte value)
                 {
-                    for (int i = 0; i < arr.Length; ++i)
+                    const int kBlockSz = 64;
+                    int i = 0;
+
+                    if ((i + kBlockSz) < arr.Length)
+                    {
+                        /* create a block */
+                        byte[] block = new byte[kBlockSz];
+                        for (int j = 0; j < block.Length; ++j) { block[j] = value; }
+                        /* pass blocks */
+                        while ((i + kBlockSz) < arr.Length)
+                        {
+                            Array.Copy(block, 0, arr, i, kBlockSz);
+                            i += kBlockSz;
+                        }
+                    }
+                    /* whatever is left */
+                    for (; i < arr.Length; ++i)
                         arr[i] = value;
                 }
                 private void FillArr(ushort[] arr, ushort value)
                 {
-                    for (int i = 0; i < arr.Length; ++i)
+                    const int kBlockSz = 64;
+                    int i = 0;
+
+                    if ((i + kBlockSz) < arr.Length)
+                    {
+                        /* create a block */
+                        ushort[] block = new ushort[kBlockSz];
+                        for (int j = 0; j < block.Length; ++j) { block[j] = value; }
+                        /* pass blocks */
+                        while ((i + kBlockSz) < arr.Length)
+                        {
+                            Array.Copy(block, 0, arr, i, kBlockSz);
+                            i += kBlockSz;
+                        }
+                    }
+                    /* whatever is left */
+                    for ( ; i < arr.Length; ++i)
                         arr[i] = value;
                 }
                 private void WriteCmd(byte command)

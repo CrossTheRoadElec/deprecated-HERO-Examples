@@ -60,7 +60,7 @@ namespace DisplayModule_Example
         }
         public int GetFirstButton(CTRE.Gamepad gamepad)
         {
-            for (uint i = 0; i < 12 ;++i)
+            for (uint i = 0; i < 16 ;++i)
             {
                 if (gamepad.GetButton(i))
                     return (int)i;
