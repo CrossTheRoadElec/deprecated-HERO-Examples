@@ -1,5 +1,6 @@
-This tool is a Windows example on how to acquire the printed output from a deployed NETMF application in HERO.   This can also be used to develop PC-side software that reacts to output from HERO.
-Attach HERO to PC via the mini-USB cable and press ìConnectî.  HERO must not be connected to Visual Studio (otherwise  just use Visual Studio to monitor the output).
+This tool is a C# Windows example on how to acquire the printed output from a deployed NETMF application in HERO.   This can also be used to develop PC-side software that reacts to output from HERO.
+Attach HERO to PC via the mini-USB cable and press ‚ÄúConnect‚Äù.  HERO must not be connected to Visual Studio (otherwise  just use Visual Studio to monitor the output).
 
 All DLL dependencies are installed after Visual Studio (C#) and HERO Toolsuite API is installed.
 
+Monitor only connects to the "first" HERO discoverd for simplicity.
