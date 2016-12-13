@@ -4,3 +4,5 @@ Attach HERO to PC via the mini-USB cable and press “Connect”.  HERO must not
 All DLL dependencies are installed after Visual Studio (C#) and HERO Toolsuite API is installed.
 
 Monitor only connects to the "first" HERO discoverd for simplicity.
+
+![](https://github.com/CrossTheRoadElec/HERO-Examples/blob/master/Windows%20GUI%20HERO%20Debug%20Monitor/Example%20Screen%20Shot.png)
