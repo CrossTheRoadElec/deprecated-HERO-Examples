@@ -110,6 +110,9 @@ namespace HERO_Debug_Monitor
                 case -1:
                     UpdateToolStrip("Disconnected, HERO not found.", System.Drawing.Color.DarkRed);
                     break;
+                case -5:
+                    UpdateToolStrip("Disconnected, HERO connected to Visual Studio.", System.Drawing.Color.DarkRed);
+                    break;
                 default:
                     UpdateToolStrip("Disconnected", System.Drawing.Color.DarkRed);
                     break;

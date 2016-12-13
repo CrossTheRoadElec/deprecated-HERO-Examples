@@ -52,14 +52,14 @@ class DeviceAPI
     {
         MFPortDefinition retval = null;
         ReadOnlyCollection<MFPortDefinition> list = null;
-
+            
         list = m_deploy.EnumPorts(TransportType.USB);
 
         if (list.Count > 0)
         {
             retval = list[0];
         }
-
+   
         return retval;
     }
 
@@ -73,7 +73,16 @@ class DeviceAPI
         }
         else
         {
-            MFPortDefinition port = FindHeroPortDef();
+            MFPortDefinition port;
+            try
+            {
+                port = FindHeroPortDef();
+            }
+            catch (Exception excep)
+            {
+                Console.Out.WriteLine(excep.Message);
+                return -5; /* exception suggests HERO is connected to VS */
+            }
 
             if (port == null)
             {
