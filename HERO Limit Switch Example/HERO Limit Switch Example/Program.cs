@@ -32,6 +32,13 @@ namespace HERO_Limit_Switch_Example
                 //test.ConfigLimitMode(TalonSrx.LimitMode.kLimitMode_SwitchInputsOnly);
 
                 Debug.Print("Rev: " + test.IsRevLimitSwitchClosed() + "  | Fwd: " + test.IsFwdLimitSwitchClosed());
+                Debug.Print("" + test.GetFaults());
+                
+                if(stick.GetButton(1))
+                {
+                    test.ClearStickyFaults();
+                }
+
 
                 test.Set(stick.GetAxis(1));
 
